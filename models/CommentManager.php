@@ -88,7 +88,18 @@ class CommentManager extends Model
      */
     private function getAllCommentsNotActived($tableComment, $tablePost)
     {
-        
+        $this->getBdd();
+        $result = [];
+
+        $req = self::$bdd->prepare("SELECT * FROM $tablePost P LEFT JOIN $tableComment C ON C.id_post = P.id  WHERE C.status = 0 ORDER BY C.id DESC");
+        $req->execute();
+    
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $data;
+        }
+        $req->closeCursor();
+
+        return $result;
     }
 
     /**
@@ -110,6 +121,17 @@ class CommentManager extends Model
      */
     private function validateCommentById($table, $id)
     {
-        
+        $this->getBdd();
+        $result = [];
+
+        $req = self::$bdd->prepare("SELECT * FROM $id P LEFT JOIN $table C ON C.id_post = P.id  WHERE C.status = 0 ORDER BY C.id DESC");
+        $req->execute();
+    
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $data;
+        }
+        $req->closeCursor();
+
+        return $result;
     }
 }

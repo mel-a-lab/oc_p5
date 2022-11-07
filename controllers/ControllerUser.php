@@ -8,7 +8,7 @@ class ControllerUser
     private $postManager;
     private $view;
 
-    public function __construct()
+    public function __construct()                                                                                                        
     {
         if (isset($url) && count($url) < 1) {
             throw new \Exception("Page Introuvable");

@@ -211,7 +211,18 @@ class UserManager extends Model
      */
     private function getAllUsersList($table)
     {
-        
+        $this->getBdd();
+        $result = [];
+
+        $req = self::$bdd->prepare("SELECT * FROM $table ORDER BY id desc");
+        $req->execute();
+    
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $data;
+        }
+        $req->closeCursor();
+
+        return $result;
     }
 
     /**
