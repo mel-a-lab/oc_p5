@@ -64,8 +64,8 @@ class UserManager extends Model
      */
     public function deleteUser($id)
     {
-        return $this->deleteUserById('user', $id);
-    }
+         return $this->deleteUserById('user', $id);
+     }
 
     /**
      * Modify user by id function
@@ -190,8 +190,18 @@ class UserManager extends Model
      */
     private function deleteUserById($table, $id)
     {
-        
+        $this->getBdd();
+        $result = "L'utilisateur a été supprimé avec succès";
+    
+        $req = self::$bdd->prepare("DELETE FROM $table WHERE id = ? ");
+        $req->execute(array($id));
+        $req->closeCursor();
+    
+        return $result;
     }
+    
+    
+    
 
     /**
      * Modify user by id function
@@ -201,7 +211,15 @@ class UserManager extends Model
      */
     private function modifyUserById($table, $id)
     {
-        
+        $this->getBdd();
+        $result =  "Le rôle a été changé en utilisateur";
+
+        $req = self::$bdd->prepare("UPDATE $table SET role = 1, dateUpdated = ? WHERE id = ?");
+        $req->execute(array(date("Y-m-d"), $id));
+    
+        $req->closeCursor();
+
+        return $result;
     }
 
     /**

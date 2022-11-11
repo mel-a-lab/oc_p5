@@ -58,14 +58,7 @@ class CommentManager extends Model
     private function addComment($table)
     {   
         $this->getBdd();
-        $newFields = array_map ('htmlspecialchars' , $_POST);
-        $result = "Merci! votre commentaire est en attente d'approbation";
-
-        $req = self::$bdd->prepare("INSERT INTO $table (id_user, id_post, content, status, dateCreated) VALUES (?, ?, ?, ?, ?)");
-        $req->execute(array($newFields['id_user'], $newFields['id_post'], $newFields['comment'], 0, date("Y-m-d H:i:s")));
-        $req->closeCursor();
-
-        return $result;
+ 
     }
 
     /**
@@ -108,9 +101,9 @@ class CommentManager extends Model
      * @param [type] $id
      * @return void
      */
-    private function deleteCommentById($table, $id)
+    private function deleteCommentById($comment, $id)
     {
-        
+  
     }
 
     /**
@@ -121,17 +114,6 @@ class CommentManager extends Model
      */
     private function validateCommentById($table, $id)
     {
-        $this->getBdd();
-        $result = [];
-
-        $req = self::$bdd->prepare("SELECT * FROM $id P LEFT JOIN $table C ON C.id_post = P.id  WHERE C.status = 0 ORDER BY C.id DESC");
-        $req->execute();
-    
-        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $data;
-        }
-        $req->closeCursor();
-
-        return $result;
+  
     }
 }
