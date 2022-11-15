@@ -127,7 +127,11 @@ class ControllerAdmin
      */
     private function validateCommentAction(): void
     {
-        
+        if (isset($_GET['id'])) {
+            $this->commentManager = new CommentManager();
+            $result = $this->commentManager->validateComment($_GET['id']);
+            header('Location:admin&commentManagement');
+        }
     }
 
     /**
@@ -136,7 +140,11 @@ class ControllerAdmin
      */
     private function deleteCommentAction(): void
     {
-       
+        if (isset($_GET['id'])) {
+            $this->commentManager = new CommentManager();
+            $result = $this->commentManager->deleteComment($_GET['id']);
+            header('Location:admin&commentManagement');
+        }
     }
 
     /**
