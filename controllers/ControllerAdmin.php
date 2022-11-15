@@ -114,7 +114,7 @@ class ControllerAdmin
      */
     private function deletePostAction(): void
     {
-        if (isset($_GET['id'],$_GET['id'])) {
+        if (isset($_GET['id'])) {
             $this->commentManager = new CommentManager();
             $result = $this->commentManager->deleteComment($_GET['id']);
             header('Location:admin&commentManagement');
@@ -136,7 +136,7 @@ class ControllerAdmin
      */
     private function deleteCommentAction(): void
     {
-        
+       
     }
 
     /**

@@ -101,9 +101,17 @@ class CommentManager extends Model
      * @param [type] $id
      * @return void
      */
-    private function deleteCommentById($comment, $id)
+    private function deleteCommentById($table, $id)
     {
-  
+        $this->getBdd();
+        $result = "Le commentaire a été supprimé";
+
+        $req = self::$bdd->prepare("DELETE FROM $table WHERE id = ?");
+        $req->execute(array($id));
+
+        $req->closeCursor();
+
+        return $result;
     }
 
     /**
@@ -114,6 +122,15 @@ class CommentManager extends Model
      */
     private function validateCommentById($table, $id)
     {
-  
+        $this->getBdd();
+        $result = "Le commentaire a été validé";
+
+        $req = self::$bdd->prepare("UPDATE $table SET status = 1, dateUpdated = ? WHERE id = ?");
+        $req->execute(array(date("Y-m-d"), $id));
+
+        $req->closeCursor();
+
+        return $result;
+    
     }
 }
