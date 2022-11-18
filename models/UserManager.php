@@ -179,7 +179,14 @@ class UserManager extends Model
      */
     private function getUserById($table, $id)
     {
-        
+        $this->getBdd();
+    
+        $req = self::$bdd->prepare("SELECT * FROM $table WHERE id = ? ");
+        $req->execute(array($id));
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+    
+        return $user;
     }
 
     /**

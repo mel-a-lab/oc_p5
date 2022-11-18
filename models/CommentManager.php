@@ -58,11 +58,18 @@ class CommentManager extends Model
     private function addComment($table)
     {   
         $this->getBdd();
- 
+        $newFields = array_map ('htmlspecialchars' , $_POST);
+        $result = "Le commentaire a été ajouté avec succès";
+
+        $req = self::$bdd->prepare("INSERT INTO $table (id_user, id_post, content, status, dateCreated) VALUES (?, ?, ?, ?, ?)");
+        $req->execute(array($newFields['id_user'], $newFields['id_post'], $newFields['content'], 0, date("Y-m-d H:i:s")));
+        $req->closeCursor();
+        
+        return $result;
     }
 
     /**
-     * Retrieve all comments function
+     * Get all comments for one post
      * @param [type] $tableComment
      * @param [type] $tableUser
      * @param [type] $idPost
@@ -70,7 +77,18 @@ class CommentManager extends Model
      */
     private function getAllCommentsPost($tableComment, $tableUser, $idPost)
     {
-        
+        $this->getBdd();
+        $result = [];
+
+        $req = self::$bdd->prepare("SELECT * FROM $tableUser U LEFT JOIN $tableComment C ON C.id_user = U.id  WHERE C.id_post = ? AND C.status = 1 ORDER BY C.id DESC");
+        $req->execute(array($idPost));
+    
+        while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+            $result[] = $data;
+        }
+        $req->closeCursor();
+
+        return $result;
     }
 
     /**
