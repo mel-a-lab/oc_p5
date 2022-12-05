@@ -280,7 +280,7 @@ class PHPMailer
      *
      * @var string
      */
-    public $Host = 'localhost';
+    public $Host = 'smtp.gmail.com';
 
     /**
      * The default SMTP server port.
