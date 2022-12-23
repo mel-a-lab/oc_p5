@@ -68,6 +68,14 @@ class ControllerPost
      */
     private function addCommentAction(): void
     {
+        if (!empty($_POST)) {
+            $this->commentManager = new CommentManager();
+            $result = $this->commentManager->addCommentAction();
+            $_SESSION['success'] = "Merci! votre commentaire est en attente d'approbation";
+            header('Location: post&id='.$_POST['id_post']);
+        } else { 
+            header('Location: post&id='.$_POST['id_post']);
+        }
         
     }
 }

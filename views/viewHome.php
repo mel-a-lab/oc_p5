@@ -4,6 +4,7 @@
         	<h1 class="title display-table-cell"><b><?= $_SESSION['firstName'] .' '. $_SESSION['lastName'] ?>, le développeur qu’il vous faut !</b></h1>
 		<?php } else { ?>
 			<h1 class="title display-table-cell"><b>Bienvenue sur mon blog !</b></h1>
+			
 		<?php } ?>
     </div>
 </div>

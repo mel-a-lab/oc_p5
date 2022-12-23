@@ -31,6 +31,7 @@
                 <li><a href="user&register">S’inscrire</a></li>
                 <?php } ?>
                 <li><a href="service&contact">Contact</a></li>
+                <li><a href="https://github.com/mel-a-lab">Github</a></li>
             </ul>
         </div>
     </header>
@@ -59,8 +60,8 @@
                             <li><a href="#">À PROPOS</a></li>
                             <li><a href="#">MENTION LÉGALE</a></li>
                         </ul>
-                        <ul> <?php var_dump(isset($_SESSION['role'])) ?>
-                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 1) { ?> <li><a
+                        <ul> 
+                            <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1) { ?> <li><a
                                     href="admin&userManagement">ADMINISTRATION</a></li>
                             <?php } ?>
                         </ul>
