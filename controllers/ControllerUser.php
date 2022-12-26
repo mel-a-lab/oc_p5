@@ -124,7 +124,16 @@ class ControllerUser
      */
     private function profile($infos = null, $user = null): void
     {
-        
+        if (isset($_GET['profile']) || isset($_GET['userEditName']) || isset($_GET['userEditPassword'])) {
+            if (!empty($_SESSION)) {
+                $this->userManager = new UserManager();
+                $user = $this->userManager->profileAction();
+                $this->view = new View('Profile');
+                $this->view->generate(array('success' => $infos, 'user' => $user));
+            } else {
+                header('Location: user&connect');
+            }
+        }
     }
 
     /**
@@ -133,7 +142,13 @@ class ControllerUser
      */
     private function userEditNameAction(): void
     {
-        
+        if (!empty($_POST)) {
+            $this->userManager = new UserManager();
+            $result = $this->userManager->userEditNameAction();
+            $this->profile($result);
+        } else {
+            $this->profile();
+        }
     }
 
     /**
@@ -142,6 +157,12 @@ class ControllerUser
      */
     private function userEditPasswordAction(): void
     {
-        
+        if (!empty($_POST)) {
+            $this->userManager = new UserManager();
+            $result = $this->userManager->userEditPasswordAction();
+            $this->profile($result);
+        } else {
+            $this->profile();
+        }
     }
 }

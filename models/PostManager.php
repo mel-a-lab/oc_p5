@@ -173,7 +173,7 @@ class PostManager extends Model
         $result = 'aaaa';
         $req = self::$bdd->prepare("INSERT INTO $table (id_user, id_category, title, content, chapo, dateCreated) VALUES (?, ?, ?, ?, ?, ?)");
         
-        $req->execute(array($newFields['id_user'], $newFields['id_category'], $newFields['title'], $newFields['content'], $newFields['chapo'], date("Y-m-d H:i:s")));
+        $req->execute(array($newFields['id_user'], $newFields['category'], $newFields['title'], $newFields['content'], $newFields['chapo'], date("Y-m-d H:i:s")));
         $req->closeCursor();
        
         return $result;
