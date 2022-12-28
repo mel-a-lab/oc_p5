@@ -148,7 +148,28 @@ class UserManager extends Model
      */
     private function editNameUser($table)
     {
-         
+        $this->getBdd();
+        $newFields = array_map ('htmlspecialchars' , $_POST);
+        $result = "Vos informations personnelles sont bien modifiées";
+
+        if ($_FILES["userPicture"]["name"] != '') {
+            $filename = $_FILES["userPicture"]["name"];
+            $tempname = $_FILES["userPicture"]["tmp_name"];
+            $folder = "./public/uploads/" . $filename;
+
+            $req = self::$bdd->prepare("UPDATE $table SET firstName = ?, lastName = ?, picture = ?, dateUpdated = ? WHERE id = ?");
+            $req->execute(array($newFields['firstName'], $newFields['lastName'], $filename, date("Y-m-d H:i:s"), $_SESSION['id']));
+            $user = $req->fetch(PDO::FETCH_ASSOC);
+            $req->closeCursor();
+            move_uploaded_file($tempname, $folder);
+            return $result;
+        } else {
+            $req = self::$bdd->prepare("UPDATE $table SET firstName = ?, lastName = ?, dateUpdated = ? WHERE id = ?");
+            $req->execute(array($newFields['firstName'], $newFields['lastName'], date("Y-m-d H:i:s"), $_SESSION['id']));
+            $user = $req->fetch(PDO::FETCH_ASSOC);
+            $req->closeCursor();
+            return $result;
+        } 
     }
 
     /**
@@ -158,7 +179,22 @@ class UserManager extends Model
      */
     private function userEditPassword($table)
     {
-        
+        $this->getBdd();
+        $newFields = array_map ('htmlspecialchars' , $_POST);
+        $result = "Votre mot de passe a bien été modifié";
+
+        if ($newFields['password'] != $newFields['confirmPassword']) {
+            $errors = "Les 2 mots de passe sont différents!";
+        }
+
+        if (empty($errors)) {
+            $subscribe = self::$bdd->prepare("UPDATE $table SET password = ?, dateUpdated = ? WHERE id = ?");
+            $subscribe->execute(array(md5($newFields['password']),  date("Y-m-d H:i:s"), $_SESSION['id']));
+            $subscribe->closeCursor();
+            return $result;
+        } else {
+            return $errors;
+        }
     }
 
     /**
@@ -168,7 +204,14 @@ class UserManager extends Model
      */
     private function profile($table)
     {
-        
+        $this->getBdd();
+
+        $req = self::$bdd->prepare("SELECT * FROM $table WHERE email = ? ");
+        $req->execute(array($_SESSION['email']));
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+        return $user;
     }
 
     /**
@@ -179,7 +222,14 @@ class UserManager extends Model
      */
     private function getUserById($table, $id)
     {
-        
+        $this->getBdd();
+    
+        $req = self::$bdd->prepare("SELECT * FROM $table WHERE id = ? ");
+        $req->execute(array($id));
+        $user = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+    
+        return $user;
     }
 
     /**

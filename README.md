@@ -9,17 +9,25 @@
 
 ## How to use this repository
 
-- create a local database named "blog_mvc"
+- create a local database named "blog_php_mvc"
 - clone the repository in your www folder if you have wamp. If you don't have wamp, clone the repository to the projects folder of your local server environment.
-- rendez-vous in the Model.php file located in the models folder and modify the login credentials to the database
+```text
+git clone https://github.com/mel-a-lab/blog_php_mvc.git
+```
+To install `composer`
+
+getcomposer.org/download/
+
+Then run the following command:
+
+```text
+composer install
+```
+- edit in the Model.php file located in the models folder and modify the login credentials to the database
 - finally, open your browser and go to localhost/blog_mvc
 
-## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
+## Used
 
-Feel free to check the [issues page](issues/).
-
-## Show your support
-
-Give a ⭐️ if you like this project!
+The admin account is : 
+email: dora@gmail.com and pw : rootroot

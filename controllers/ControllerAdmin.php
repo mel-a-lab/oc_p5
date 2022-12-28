@@ -115,10 +115,11 @@ class ControllerAdmin
     private function deletePostAction(): void
     {
         if (isset($_GET['id'])) {
-            $this->commentManager = new CommentManager();
-            $result = $this->commentManager->deleteComment($_GET['id']);
-            header('Location:admin&commentManagement');
+            $this->postManager = new PostManager();
+            $result = $this->postManager->deletePost($_GET['id']);
+            header('Location:admin&postManagement');
         }
+        
     }
 
     /**
@@ -153,6 +154,10 @@ class ControllerAdmin
      */
     private function newPost(): void
     {
+        $this->categoryManager = new CategoryManager();
+        $categories = $this->categoryManager->getAllCategory();
+        $this->view = new View('NewPost');
+        $this->view->generate(array('categories' => $categories));
         
     }
 
@@ -162,6 +167,14 @@ class ControllerAdmin
      */
     private function addPostAction(): void
     {
+        if (!empty($_POST)) {
+            $this->postManager = new PostManager();
+            $result = $this->postManager->addPost();
+            $_SESSION['success'] = "Merci! votre article a été ajouté";
+            header('Location:admin&postManagement'); 
+        } else { 
+            header('Location:admin&newPost');
+        }
         
     }
 
@@ -171,6 +184,16 @@ class ControllerAdmin
      */
     private function modifyPost(): void
     {
+        if (isset($_GET['id'])) {
+            $this->postManager = new PostManager();
+            $post = $this->postManager->modifyPost($_GET['id']); 
+            $this->categoryManager = new CategoryManager();
+            $categories = $this->categoryManager->getAllCategory();
+            $this->view = new View('ModifyPost');
+            $this->view->generate(array('post' => $post, 'categories' => $categories));           
+        } else { 
+            header('Location:admin&postManagement');
+        }
         
     }
 
@@ -180,6 +203,12 @@ class ControllerAdmin
      */
     private function editPostAction(): void
     {
-        
+        if (!empty($_POST)) {
+            $this->postManager = new PostManager();
+            $result = $this->postManager->editPostAction($_POST['idPost']);
+            header('Location: admin&postManagement');
+        } else {
+            header('Location: admin&modifyPost&id='.$_GET['id']);
+        }
     }
 }

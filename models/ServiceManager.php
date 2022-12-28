@@ -2,6 +2,8 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
 
 class ServiceManager extends Model
 {
@@ -24,17 +26,20 @@ class ServiceManager extends Model
     {
         $newFields = array_map ('htmlspecialchars' , $_POST);
         $mail = new PHPMailer;
-
+      //  $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+      //  $mail->SMTPDebug = 3; //Alternative to above constant
         $mail->isSMTP();                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;               // Enable SMTP authentication
-        $mail->Username = 'test@gmail.com';   // SMTP username
-        $mail->Password = '';   // SMTP password
+        $mail->Username = 'melanie.dussenne@gmail.com';   // SMTP username
+        $mail->Password = 'hhfzkeyaplzwevis';   // SMTP password
         $mail->SMTPSecure = 'tls';            // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 587;                    // TCP port to connect to
+        $mail->Port = 25;                    // TCP port to connect to
+        
+       
 
         // Sender info
-        $mail->setFrom('test@gmail.com', 'Bona');
+        $mail->setFrom('melanie.dussenne@gmail.com', 'Bona');
 
         // Add a recipient
         $mail->addAddress($newFields['email']);

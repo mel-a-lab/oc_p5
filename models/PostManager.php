@@ -112,7 +112,15 @@ class PostManager extends Model
      */
     private function deletePostById($table, $id)
     {
-        
+        $this->getBdd();
+        $result = "L'article a été supprimé";
+
+        $req = self::$bdd->prepare("DELETE FROM $table WHERE id = ?");
+        $req->execute(array($id));
+
+        $req->closeCursor();
+
+        return $result;
     }
 
     /**
@@ -123,7 +131,15 @@ class PostManager extends Model
      */
     private function modifyPostById($table, $id) 
     {
-        
+        $this->getBdd();
+        $result =  "L'article a été modifié";
+
+        $req = self::$bdd->prepare("SELECT * FROM $table WHERE id = ?");
+        $req->execute(array($id));
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        $req->closeCursor();
+
+        return $data;
     }
 
     /**
@@ -134,7 +150,14 @@ class PostManager extends Model
      */
     private function modifyPostByIdAction($table, $id)
     {
-        
+        $this->getBdd();
+        $newFields = array_map ('htmlspecialchars' , $_POST);
+        $result = 'aaa';
+        $req = self::$bdd->prepare("UPDATE $table SET id_category = ?, title = ?, content = ?, chapo = ?, dateUpdated = ? WHERE id = ?");
+        $req->execute(array($newFields['category'], $newFields['title'], $newFields['content'], $newFields['chapo'], date("Y-m-d H:i:s"), $id));
+        $req->closeCursor();
+       
+        return $result;
     }
 
     /**
@@ -146,12 +169,13 @@ class PostManager extends Model
     {
         $this->getBdd();
         $newFields = array_map ('htmlspecialchars' , $_POST);
-        $result = "L'article a été ajouté avec succès";
-
+   //     var_dump($newFields);die;
+        $result = 'aaaa';
         $req = self::$bdd->prepare("INSERT INTO $table (id_user, id_category, title, content, chapo, dateCreated) VALUES (?, ?, ?, ?, ?, ?)");
-        $req->execute(array($newFields['idUser'], $newFields['category'], $newFields['title'], $newFields['content'], $newFields['chapo'], date("Y-m-d H:i:s")));
+        
+        $req->execute(array($newFields['id_user'], $newFields['category'], $newFields['title'], $newFields['content'], $newFields['chapo'], date("Y-m-d H:i:s")));
         $req->closeCursor();
-
+       
         return $result;
     }
 }
