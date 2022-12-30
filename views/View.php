@@ -8,7 +8,7 @@ class View
     //Titre de la page
     private $title;
 
-    function __construct($action)
+    public function __construct($action)
     {
         $this->file = 'views/view'.$action.'.php';
     }
