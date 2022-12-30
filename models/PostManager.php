@@ -169,7 +169,6 @@ class PostManager extends Model
     {
         $this->getBdd();
         $newFields = array_map ('htmlspecialchars' , $_POST);
-   //     var_dump($newFields);die;
         $result = 'aaaa';
         $req = self::$bdd->prepare("INSERT INTO $table (id_user, id_category, title, content, chapo, dateCreated) VALUES (?, ?, ?, ?, ?, ?)");
         

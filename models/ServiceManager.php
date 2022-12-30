@@ -26,7 +26,7 @@ class ServiceManager extends Model
     {
         $newFields = array_map ('htmlspecialchars' , $_POST);
         $mail = new PHPMailer;
-      //  $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+      
       //  $mail->SMTPDebug = 3; //Alternative to above constant
         $mail->isSMTP();                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';       // Specify main and backup SMTP servers
@@ -44,8 +44,8 @@ class ServiceManager extends Model
         // Add a recipient
         $mail->addAddress($newFields['email']);
 
-        //$mail->addCC('cc@example.com');
-        //$mail->addBCC('bcc@example.com');
+        
+       
 
         // Set email format to HTML
         $mail->isHTML(true);
