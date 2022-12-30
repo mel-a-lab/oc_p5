@@ -2017,10 +2017,6 @@ var Modal = function ($) {
       }
     };
 
-    // ----------------------------------------------------------------------
-    // the following methods are used to handle overflowing modals
-    // (fat): these should probably be refactored out of modal.js
-    // ----------------------------------------------------------------------
 
     Modal.prototype._handleUpdate = function _handleUpdate() {
       this._adjustDialog();
