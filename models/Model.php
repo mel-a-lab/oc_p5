@@ -21,7 +21,7 @@ abstract class Model
      */
     protected function getBdd()
     {
-        if (self::$bdd == null) {
+        if (self::$bdd === null) {
             self::setBdd();
             return self::$bdd;
         }
