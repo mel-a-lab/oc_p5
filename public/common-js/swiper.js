@@ -3139,7 +3139,7 @@
                     return ((x2 - this.x[i1]) * (this.y[i3] - this.y[i1])) / (this.x[i3] - this.x[i1]) + this.y[i1];
                 };
             },
-            //xxx: for now i will just save one spline function to to
+            
             getInterpolateFunction: function(c){
                 if(!s.controller.spline) s.controller.spline = s.params.loop ?
                     new s.controller.LinearSpline(s.slidesGrid, c.slidesGrid) :
