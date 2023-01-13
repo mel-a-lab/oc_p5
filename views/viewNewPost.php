@@ -1,11 +1,12 @@
 <section class="comment-section">
     <div class="container">
+    <h3><a href="admin&newPost"><b>Ajouter un article</b></a></h3>
         <?php if (isset($result)) { ?>
         <div class="row">
             <div class="col-lg-3 col-md-0"></div>
             <div class="col-lg-6 col-md-12">
                 <div class="comment-form center-text">
-                    <div class="alert-info" role="alert"><?php echo $result ?> </div>
+                    <div class="alert-info" role="alert"><?php echo htmlspecialchars($result) ?> </div>
                 </div>
             </div>
         </div>

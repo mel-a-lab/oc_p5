@@ -1,11 +1,12 @@
 <section class="comment-section center-text">
+<h3><a href="user&connect"><b>Se connecter</b></a></h3>
 	<div class="container">
 		<?php if (isset($success)) { ?>
 		<div class="row">
 			<div class="col-lg-4 col-md-0"></div>
 			<div class="col-lg-4 col-md-12">
 				<div class="comment-form">
-					<div class="alert-info" role="alert"><?php echo $success ?> </div>
+					<div class="alert-info" role="alert"><?php echo htmlspecialchars($success) ?> </div>
 				</div>
 			</div>
 		</div>

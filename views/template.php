@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Bōna | blog personnel</title>
+    <title>Mélanie | blog personnel</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
@@ -13,7 +13,8 @@
     <link href="public/layout-1/css/responsive.css" rel="stylesheet">
     <link href="public/single-post-3/css/styles.css" rel="stylesheet">
     <link href="public/single-post-3/css/responsive.css" rel="stylesheet">
-
+    <link href="public/css/style.css" rel="stylesheet">
+    
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
@@ -21,6 +22,7 @@
     <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@
                 <?php if (($_SESSION['role']) == 1) { ?>
                 <li><a href="admin&newPost">Nouvel article</a></li>
                 <?php } ?>
-                <li><a href="user&profile"><?php echo $_SESSION['firstName'] ?></a></li>
+                <li><a href="user&profile"><?php echo htmlspecialchars($_SESSION['firstName']) ?></a></li>
                 <?php } else { ?>
                 <li><a href="user&connect">Se connecter</a></li>
                 <li><a href="user&register">S’inscrire</a></li>
@@ -50,7 +52,7 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-section">
                         <a class="logo" href="#"><img src="public/images/logo.png" alt="Logo Image"></a>
-                        <p class="copyright">Bona @ <?= date("Y") ?> All rights reserved</p>
+                        <p class="copyright">Mélanie @ <?= date("Y") ?> All rights reserved</p>
                         <ul class="icons">
                             <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
                             <li><a href="#"><i class="ion-social-twitter-outline"></i></a></li>
