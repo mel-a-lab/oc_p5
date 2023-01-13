@@ -155,7 +155,7 @@ class UserManager extends Model
         if ($_FILES["userPicture"]["name"] != '') {
             $filename = $_FILES["userPicture"]["name"];
             $tempname = $_FILES["userPicture"]["tmp_name"];
-            $folder = "./public/uploads/" . $filename;
+            $folder = "./uploads/" . $filename;
 
             $req = self::$bdd->prepare("UPDATE $table SET firstName = ?, lastName = ?, picture = ?, dateUpdated = ? WHERE id = ?");
             $req->execute(array($newFields['firstName'], $newFields['lastName'], $filename, date("Y-m-d H:i:s"), $_SESSION['id']));

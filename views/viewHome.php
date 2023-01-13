@@ -16,7 +16,7 @@
 				<div class="card h-100">
 					<div class="single-post post-style-1" style="padding-bottom:0%">
 						<div class="blog-image" style="position: relative;">
-							<img src="public/images/default-post.jpg" alt="Blog Image">
+							<img src="images/default-post.jpg" alt="Blog Image">
 							<h1 class="title" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><b><?= substr($post['title'], 0, 10) ?></b></h1>
 						</div>
 						<div class="blog-info">

@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-    <link href="public/common-css/bootstrap.css" rel="stylesheet">
-    <link href="public/common-css/ionicons.css" rel="stylesheet">
-    <link href="public/layout-1/css/styles.css" rel="stylesheet">
-    <link href="public/layout-1/css/responsive.css" rel="stylesheet">
-    <link href="public/single-post-3/css/styles.css" rel="stylesheet">
-    <link href="public/single-post-3/css/responsive.css" rel="stylesheet">
-    <link href="public/css/style.css" rel="stylesheet">
+    <link href="common-css/bootstrap.css" rel="stylesheet">
+    <link href="common-css/ionicons.css" rel="stylesheet">
+    <link href="layout-1/css/styles.css" rel="stylesheet">
+    <link href="layout-1/css/responsive.css" rel="stylesheet">
+    <link href="single-post-3/css/styles.css" rel="stylesheet">
+    <link href="single-post-3/css/responsive.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -28,7 +28,7 @@
 <body>
     <header>
         <div class="container-fluid position-relative no-side-padding">
-            <a href="post&home" class="logo"><img src="public/images/logo.png" alt="Logo Image"></a>
+            <a href="post&home" class="logo"><img src="images/logo.png" alt="Logo Image"></a>
             <ul class="main-menu visible-on-click">
                 <?php if (isset($_SESSION['id'])) { ?>
                 <li><a href="user&disconnect">Se déconnecter</a></li>
@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-section">
-                        <a class="logo" href="#"><img src="public/images/logo.png" alt="Logo Image"></a>
+                        <a class="logo" href="#"><img src="images/logo.png" alt="Logo Image"></a>
                         <p class="copyright">Mélanie @ <?= date("Y") ?> All rights reserved</p>
                         <ul class="icons">
                             <li><a href="#"><i class="ion-social-facebook-outline"></i></a></li>
@@ -93,10 +93,10 @@
         </div>
     </footer>
     <!-- SCIPTS -->
-    <script src="public/common-js/jquery-3.1.1.min.js" type="text/javascript"></script>
-    <script src="public/common-js/tether.min.js" type="text/javascript"></script>
-    <script src="public/common-js/bootstrap.js" type="text/javascript"></script>
-    <script src="public/common-js/scripts.js" type="text/javascript"></script>
+    <script src="common-js/jquery-3.1.1.min.js" type="text/javascript"></script>
+    <script src="common-js/tether.min.js" type="text/javascript"></script>
+    <script src="common-js/bootstrap.js" type="text/javascript"></script>
+    <script src="common-js/scripts.js" type="text/javascript"></script>
 </body>
 
 </html>

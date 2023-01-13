@@ -29,7 +29,7 @@
 								</div>
 								<div class="col-sm-2">
 									<div class="left-area" style="height: 70px;width: 70px;border-radius: 100px;overflow: hidden;position: absolute;top: 60%;margin-top: -35px;border: 6px solid #fff;box-shadow: 0px 0px 5px rgb(0 0 0 / 30%);">
-										<a class="avatar" href="#"><img src=<?= isset($user['picture']) ? "public/uploads/".$user['picture'] : "public/images/default-profile.png" ?> alt="Photo de profil"></a>
+										<a class="avatar" href="#"><img src=<?= isset($user['picture']) ? "uploads/".$user['picture'] : "images/default-profile.png" ?> alt="Photo de profil"></a>
 									</div>
 								</div>
 								<div class="col-sm-6">

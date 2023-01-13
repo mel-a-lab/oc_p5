@@ -8,7 +8,7 @@
                     <div class="single-post post-style-1">
                         <div class="blog-image" style="padding: 22px"></div>
                         <a class="avatar" href="#"><img
-                                src=<?= isset($user['picture']) ? "public/uploads/".$user['picture'] : "public/images/default-profile.png" ?>
+                                src=<?= isset($user['picture']) ? "uploads/".$user['picture'] : "images/default-profile.png" ?>
                                 alt="Photo de profil"></a>
                         <div class="blog-info">
                             <h4 class="title"><a href="#"><b><?= $user['firstName'] .' '. $user['lastName'] ?>
