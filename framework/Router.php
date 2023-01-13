@@ -2,10 +2,10 @@
 
 session_start();
 
-require_once 'views/View.php';
-require_once 'vendor/PHPMailer/PHPMailer/src/Exception.php';
-require_once 'vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
-require_once 'vendor/PHPMailer/PHPMailer/src/SMTP.php';
+require_once '../views/View.php';
+require_once '../vendor/PHPMailer/PHPMailer/src/Exception.php';
+require_once '../vendor/PHPMailer/PHPMailer/src/PHPMailer.php';
+require_once '../vendor/PHPMailer/PHPMailer/src/SMTP.php';
 
 class Router
 {
@@ -17,7 +17,7 @@ class Router
         try {
             //chargement automatique des classes du dossier models
             spl_autoload_register(function($class){
-                require_once('models/'.$class.'.php');
+                require_once('../models/'.$class.'.php');
             });
 
             //on crée une variable $url
@@ -28,7 +28,7 @@ class Router
             if (isset($_GET['url'])) {
                 //on décompose l'url et on lui applique un filtre
                 $url = explode('/', filter_var($_GET['url'], FILTER_SANITIZE_URL));
-
+                
                 //on recupere le premier parametre de url
                 //on le met tout en miniscule
                 //on met sa premiere lettre en majuscule
@@ -37,7 +37,7 @@ class Router
                 $controllerClass = "Controller".$controller;
 
                 //on retrouve le chemin du controleur voulu
-                $controllerFile = "controllers/".$controllerClass.".php";
+                $controllerFile = "../controllers/".$controllerClass.".php";
 
                 //on check si le fichier du controleur existe
                 if (file_exists($controllerFile)) {
@@ -50,7 +50,7 @@ class Router
                     throw new \Exception("Page introuvable", 1);
                 }
             } else {
-                require_once('controllers/ControllerHome.php');
+                require_once('../controllers/ControllerHome.php');
                 $this->ctrl = new ControllerHome($url);
             }
         } catch (\Exception $e) {

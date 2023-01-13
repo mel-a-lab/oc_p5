@@ -10,7 +10,7 @@ class View
 
     public function __construct($action)
     {
-        $this->file = 'views/view'.$action.'.php';
+        $this->file = '../views/view'.$action.'.php';
     }
 
     /**
@@ -24,7 +24,7 @@ class View
         $content = $this->generateFile($this->file, $data);
 
         //Template
-        $view = $this->generateFile('views/template.php', array('t' => $this->title, 'content' => $content));
+        $view = $this->generateFile('../views/template.php', array('t' => $this->title, 'content' => $content));
         echo $view;
     }
 
@@ -39,7 +39,7 @@ class View
         $content = $this->generateFile($this->file, $data);
 
         //Template
-        $view = $this->generateFile('views/templateSingle.php', array('t' => $this->title, 'content' => $content));
+        $view = $this->generateFile('../views/templateSingle.php', array('t' => $this->title, 'content' => $content));
         echo $view;
     }
 

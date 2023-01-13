@@ -19,7 +19,7 @@
                         <div class="post-info">
                             <div class="left-area">
                                 <a class="avatar" href="#"><img
-                                        src=<?= isset($user['picture']) ? "public/uploads/".$user['picture'] : "public/images/default-profile.png" ?>
+                                        src=<?= isset($user['picture']) ? "uploads/".$user['picture'] : "images/default-profile.png" ?>
                                         alt="Photo de profil"></a>
                             </div>
                             <div class="middle-area">
@@ -87,7 +87,7 @@
                         <div class="post-info">
                             <div class="left-area">
                                 <a class="avatar" href="#"><img
-                                        src=<?= isset($user['picture']) ? "public/uploads/".$user['picture'] : "public/images/default-profile.png" ?>
+                                        src=<?= isset($user['picture']) ? "uploads/".$user['picture'] : "images/default-profile.png" ?>
                                         alt="Profile Image"></a>
                             </div>
                             <div class="middle-area">
