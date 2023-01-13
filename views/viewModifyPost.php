@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-md-0"></div>
             <div class="col-lg-6 col-md-12">
                 <div class="comment-form center-text">
-                    <div class="alert-info" role="alert"><?php echo $result ?> </div>
+                    <div class="alert-info" role="alert"><?php echo htmlspecialchars($result) ?> </div>
                 </div>
             </div>
         </div>
@@ -32,7 +32,7 @@
                                     required>
                                     <?php foreach($categories as $categorie): ?>
                                     <option value=<?= $categorie['id'] ?>
-                                        <?php if ($categorie['id'] == $post['id_category']) echo "selected" ?>>
+                                        <?php if ($categorie['id'] == $post['id_category']) echo htmlspecialchars("selected") ?>>
                                         <?= $categorie['name'] ?></option>
                                     <?php endforeach; ?>
                                 </select>

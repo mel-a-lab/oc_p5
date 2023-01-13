@@ -40,7 +40,7 @@
                         <div class="post-icons-area">
                             <ul class="post-icons">
                                 <li><a href="#"><i
-                                            class="ion-chatbubble"></i><?php if (!empty($comments)) { echo count($comments); } else { echo '0'; } ?></a>
+                                            class="ion-chatbubble"></i><?php if (!empty($comments)) { echo htmlspecialchars(count($comments)); } else { echo '0'; } ?></a>
                                 </li>
                             </ul>
                             <ul class="icons">

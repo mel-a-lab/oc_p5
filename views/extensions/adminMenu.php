@@ -1,4 +1,5 @@
-<section class="blog-area section" style="padding: 20px 0 0px">
+<section class="blog-area section admin-menu-section" >
+<h3><a href="admin&userManagement"><b>Administration</b></a></h4>
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6" style="padding: 0px 0px 0px;">

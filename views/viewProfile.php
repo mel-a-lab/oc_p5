@@ -1,5 +1,6 @@
 <section class="comment-section">
 	<div class="container">
+	<h3><a href="user&profile"><b>Profil Personnel</b></a></h3>
         <?php if (isset($success)) { ?>
 		<div class="row">
 			<div class="col-lg-3 col-md-0"></div>
