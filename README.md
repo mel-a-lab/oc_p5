@@ -1,5 +1,7 @@
 # PHP Blog with MVC architecture
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/787aaa2fa8c04bf9800c0035c418aac0)](https://app.codacy.com/gh/mel-a-lab/oc_p5_blog_archi_mvc?utm_source=github.com&utm_medium=referral&utm_content=mel-a-lab/oc_p5_blog_archi_mvc&utm_campaign=Badge_Grade_Settings)
+
 ##This repo shows how to create a blog with MVC architecture
 
 ## Built With
