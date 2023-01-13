@@ -15,6 +15,7 @@
 				<div class="col-lg-2 col-md-0"></div>
 				<div class="col-lg-8 col-md-12">
 					<div class="comment-form">
+					<label for="editer_nom_prenom">Éditer votre nom et/ou prénom ici :</label> 
 						<form method="POST" action="user&userEditName=action" class="contact1-form validate-form" enctype="multipart/form-data">
 							<div class="row">
 								<div class="col-sm-6">
@@ -51,6 +52,7 @@
 				<div class="col-lg-2 col-md-0"></div>
 				<div class="col-lg-8 col-md-12">
 					<div class="comment-form">
+					<label for="éditer_mdp">Éditer votre mot de passe ici :</label> 
 						<form method="post" action="user&userEditPassword=action" class="contact1-form validate-form">
 							<div class="row">
 								<div class="col-sm-6">
