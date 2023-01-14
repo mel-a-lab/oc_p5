@@ -115,6 +115,7 @@
 	--------------------------------- */
 
 	body{ font-size: 14px;  }
+	header .logo img { height: 30px !important;  } 
 	
 	
 }
