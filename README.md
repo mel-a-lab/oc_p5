@@ -11,10 +11,10 @@
 
 ## How to use this repository
 
-- create a local database named "blog_php_mvc"
+- create a local database named "oc_p5"
 - clone the repository in your www folder if you have wamp. If you don't have wamp, clone the repository to the projects folder of your local server environment.
 ```text
-git clone https://github.com/mel-a-lab/blog_php_mvc.git
+git clone https://github.com/mel-a-lab/oc_p5_blog_archi_mvc.git
 ```
 To install `composer`
 
@@ -26,7 +26,7 @@ Then run the following command:
 composer install
 ```
 - edit in the Model.php file located in the models folder and modify the login credentials to the database
-- finally, open your browser and go to localhost/blog_mvc
+- finally, open your browser and go to localhost/oc_p5
 
 
 ## Used
