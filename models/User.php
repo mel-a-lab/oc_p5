@@ -30,7 +30,7 @@ class User
     }
 
 	public function getId(): int {
-		return $this->$id;
+		return $this->id;
 	}
 
 	public function setId(int $id) {
