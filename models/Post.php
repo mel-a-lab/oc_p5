@@ -19,7 +19,8 @@ class Post
     public function hydrate($data)
     {
         foreach ($data as $attribut => $value) {
-            $method = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));
+            
+			$method = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));
             if (is_callable(array($this, $method))) {
                 $this->$method($value);
             }
@@ -27,7 +28,7 @@ class Post
     }
 
     public function getId(): int {
-		return $this->$id;
+		return $this->id;
 	}
 
 	public function setId(int $id) {
@@ -63,7 +64,7 @@ class Post
 	}
 
 	public function getDateUpdated(): DateTime {
-		return $this->$dateUpdated;
+		return $this->dateUpdated;
 	}
 
 	public function setDateUpdated(DateTime $dateUpdated) {

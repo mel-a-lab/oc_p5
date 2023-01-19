@@ -26,7 +26,7 @@ class Comment
     }
 
     public function getId(): int {
-		return $this->$id;
+		return $this->id;
 	}
 
 	public function setId(int $id) {
@@ -42,7 +42,7 @@ class Comment
 	}
 
     public function getStatus(): int {
-		return $this->$status;
+		return $this->status;
 	}
 
 	public function setStatus(int $status) {
@@ -58,7 +58,7 @@ class Comment
 	}
 
 	public function getDateUpdated(): DateTime {
-		return $this->$dateUpdated;
+		return $this->dateUpdated;
 	}
 
 	public function setDateUpdated(DateTime $dateUpdated) {

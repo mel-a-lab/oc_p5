@@ -76,6 +76,8 @@ class PostManager extends Model
     
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
             $result[] = $data;
+            //$result[] = new Post($data);
+            
         }
         $req->closeCursor();
 
