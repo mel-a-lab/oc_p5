@@ -12,28 +12,23 @@ class Post
     public function __construct($value = array())
     {
         if(!empty($value)) {
-            $this->hydrate($value); var_dump($value);
-		
+            $this->hydrate($value);
         }
-
     }
-
-	
 
     public function hydrate($data)
     {
         foreach ($data as $attribut => $value) {
-			
             
 			$method = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));
             if (is_callable(array($this, $method))) {
-                $this->$method($value); 
+                $this->$method($value);
             }
         }
     }
 
     public function getId(): int {
-		return $this->id; 
+		return $this->id;
 	}
 
 	public function setId(int $id) {
@@ -63,10 +58,6 @@ class Post
 	public function setChapo(string $chapo) {
 		$this->title = $chapo;
 	}
-	
-	public function getDateCreated(): Datetime {
-		return $this->dateCreated;
-	}
 
 	public function setDateCreated(DateTime $dateCreated) {
 		$this->dateCreated = $dateCreated;
@@ -80,4 +71,3 @@ class Post
 		$this->dateUpdated = $dateUpdated;
 	}
 }
-
