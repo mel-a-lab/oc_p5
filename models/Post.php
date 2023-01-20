@@ -7,7 +7,7 @@ class Post
     private string $content;
     private string $chapo;
     private DateTime $dateCreated;
-    private DateTime $dateUpdated;
+    private ?DateTime $dateUpdated;
 
     public function __construct($value = array())
     {
@@ -17,9 +17,13 @@ class Post
     }
 
     public function hydrate($data)
-    {
+    {	
+		$data['dateCreated']= new DateTime($data['dateCreated']);
+
+		if($data['dateUpdated']){
+			$data['dateUpdated']= new DateTime($data['dateUpdated']);
+		}
         foreach ($data as $attribut => $value) {
-            
 			$method = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));
             if (is_callable(array($this, $method))) {
                 $this->$method($value);
@@ -56,18 +60,22 @@ class Post
 	}
 
 	public function setChapo(string $chapo) {
-		$this->title = $chapo;
+		$this->chapo = $chapo;
 	}
 
 	public function setDateCreated(DateTime $dateCreated) {
 		$this->dateCreated = $dateCreated;
 	}
 
-	public function getDateUpdated(): DateTime {
+	public function getDateCreated(): ?DateTime {
+		return $this->dateCreated;
+	}
+
+	public function getDateUpdated(): ?DateTime {
 		return $this->dateUpdated;
 	}
 
-	public function setDateUpdated(DateTime $dateUpdated) {
+	public function setDateUpdated(?DateTime $dateUpdated) {
 		$this->dateUpdated = $dateUpdated;
 	}
 }
