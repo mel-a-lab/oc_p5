@@ -84,7 +84,8 @@ class CommentManager extends Model
         $req->execute(array($idPost));
     
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $data;
+            //$result[] = $data;
+            $result[] = new Comment($data);
         }
         $req->closeCursor();
 
@@ -106,7 +107,8 @@ class CommentManager extends Model
         $req->execute();
     
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $data;
+            //$result[] = $data;
+            $result[] = new Comment($data);
         }
         $req->closeCursor();
 

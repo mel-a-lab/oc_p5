@@ -109,8 +109,8 @@ class UserManager extends Model
         }
 
         if (empty($errors)) {
-            $subscribe = self::$bdd->prepare("INSERT INTO $table (firstName, lastName, email, password, dateCreated) VALUES (?, ?, ?, ?, ?)");
-            $subscribe->execute(array($newFields['firstName'], $newFields['lastName'], $newFields['email'], md5($newFields['password']),  date("Y-m-d H:i:s")));
+            $subscribe = self::$bdd->prepare("INSERT INTO $table (firstName, lastName, email, password, dateCreated, picture) VALUES (?, ?, ?, ?, ?,?)");
+            $subscribe->execute(array($newFields['firstName'], $newFields['lastName'], $newFields['email'], md5($newFields['password']),  date("Y-m-d H:i:s"), ""));
             $subscribe->closeCursor();
         } else {
             return $errors;
@@ -286,7 +286,8 @@ class UserManager extends Model
         $req->execute();
     
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $data;
+            //$result[] = $data;
+            $result[] = new User($data);
         }
         $req->closeCursor();
 

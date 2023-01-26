@@ -10,7 +10,7 @@ class User
     private int $role;
     private string $picture;
     private DateTime $dateCreated;
-    private DateTime $dateUpdated;
+    private ?DateTime $dateUpdated;
 
     public function __construct($value = array())
     {
@@ -20,7 +20,12 @@ class User
     }
 
     public function hydrate($data)
-    {
+    {	
+		$data['dateCreated']= new DateTime($data['dateCreated']);
+
+		if($data['dateUpdated']){
+			$data['dateUpdated']= new DateTime($data['dateUpdated']);
+		}
         foreach ($data as $attribut => $value) {
             $method = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));
             if (is_callable(array($this, $method))) {
@@ -69,11 +74,11 @@ class User
 		$this->password = $password;
 	}
 
-	public function getRole() {
+	public function getRole(): int {
 		return $this->role;
 	}
 
-	public function setRole(int $role): int {
+	public function setRole(int $role) {
 		$this->role = $role;
 	}
 
@@ -93,11 +98,11 @@ class User
 		$this->dateCreated = $dateCreated;
 	}
 
-	public function getDateUpdated(): DateTime {
+	public function getDateUpdated(): ?DateTime {
 		return $this->$dateUpdated;
 	}
 
-	public function setDateUpdated(DateTime $dateUpdated) {
+	public function setDateUpdated(?DateTime $dateUpdated) {
 		$this->dateUpdated = $dateUpdated;
 	}
 }

@@ -15,27 +15,27 @@
             <div class="col-lg-10 col-md-12">
                 <div class="main-post" style="margin-top: 30px;">
                     <div class="post-top-area">
-                        <h3 class="title"><b><?= $post['chapo'] ?></b></h3>
+                        <h3 class="title"><b><?= $post->getChapo() ?></b></h3>
                         <div class="post-info">
                             <div class="left-area">
                                 <a class="avatar" href="#"><img
-                                        src=<?= isset($user['picture']) ? "uploads/".$user['picture'] : "images/default-profile.png" ?>
+                                        src=<?= $user->getPicture() ? "uploads/".$user['picture'] : "images/default-profile.png" ?>
                                         alt="Photo de profil"></a>
                             </div>
                             <div class="middle-area">
-                                <a class="name" href="#"><b><?= $user['firstName'] .' '. $user['lastName'] ?></b></a>
-                                <?php if (isset($post['dateUpdated'])): ?>
+                                <a class="name" href="#"><b><?= $user->getFirstName() .' '. $user['lastName'] ?></b></a>
+                                <?php if ($post->getDateUpdated): ?>
                                 <h6 class="date">Dernière modification le : <?= $post['dateUpdated'] ?></h6>
                                 <?php else: ?>
-                                <h6 class="date">Publié le : <?= $post['dateCreated'] ?></h6>
+                                <h6 class="date">Publié le : <?= $post->getDateCreated() ?></h6>
                                 <?php endif; ?>
                             </div>
                         </div>
                     </div>
                     <div class="post-bottom-area">
-                        <p class="para"><?= $post['content'] ?></p>
+                        <p class="para"><?= $post->getContent() ?></p>
                         <ul class="tags">
-                            <li><a href="#"><?= $category['name'] ?></a></li>
+                            <li><a href="#"><?= $category->getName() ?></a></li>
                         </ul>
                         <div class="post-icons-area">
                             <ul class="post-icons">

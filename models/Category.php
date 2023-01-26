@@ -5,7 +5,7 @@ class Category
     private int $id;
     private string $name;
     private DateTime $dateCreated;
-    private DateTime $dateUpdated;
+    private ?DateTime $dateUpdated;
 
     public function __construct($value = array())
     {
@@ -15,7 +15,12 @@ class Category
     }
 
     public function hydrate($data)
-    {
+    {   
+        $data['dateCreated']= new DateTime($data['dateCreated']);
+
+		if($data['dateUpdated']){
+			$data['dateUpdated']= new DateTime($data['dateUpdated']);
+		}
         foreach ($data as $attribut => $value) {
             $method = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));
             if (is_callable(array($this, $method))) {
@@ -25,7 +30,7 @@ class Category
     }
 
     public function getId(): int {
-		return $this->$id;
+		return $this->id;
 	}
 
 	public function setId(int $id) {
@@ -48,11 +53,11 @@ class Category
 		$this->dateCreated = $dateCreated;
 	}
 
-	public function getDateUpdated(): DateTime {
+	public function getDateUpdated(): ?DateTime {
 		return $this->$dateUpdated;
 	}
 
-	public function setDateUpdated(DateTime $dateUpdated) {
+	public function setDateUpdated(?DateTime $dateUpdated) {
 		$this->dateUpdated = $dateUpdated;
 	}
 }
