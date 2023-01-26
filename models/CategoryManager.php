@@ -52,7 +52,8 @@ class CategoryManager extends Model
         $req = self::$bdd->prepare("SELECT * FROM $table");  
         $req->execute();      
         while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
-            $result[] = $data;
+            //$result[] = $data;
+            $result[] = new Categoty($data);
         }
         $req->closeCursor();
 

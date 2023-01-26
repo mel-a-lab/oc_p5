@@ -67,7 +67,7 @@ class Post
 		$this->dateCreated = $dateCreated;
 	}
 
-	public function getDateCreated(): ?DateTime {
+	public function getDateCreated(): DateTime {
 		return $this->dateCreated;
 	}
 

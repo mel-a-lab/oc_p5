@@ -8,18 +8,18 @@
                     <div class="single-post post-style-1">
                         <div class="blog-info">
                             <h4 class="title" style="padding: 10px 10px 0px"><a
-                                    href="post&id=<?= $post['id'] ?>"><b><?= substr($post['chapo'], 0, 30). "..." ?></b></a>
+                                    href="post&id=<?= $post->getId() ?>"><b><?= substr($post->getChapo(), 0, 30). "..." ?></b></a>
                             </h4>
                             <hr>
                         </div>
                         <div class="blog-info">
                             <h6 class="title" style="padding: 0px 10px 10px">
-                                <?= substr($post['content'], 0, 200). "..." ?></h6>
+                                <?= substr($post->getContent(), 0, 200). "..." ?></h6>
                             <ul class="post-footer">
-                                <li><a href="admin&modifyPost&id=<?= $post['id'] ?>"><i class="ion-edit"></i></a></li>
-                                <li><a href="admin&deletePost&id=<?= $post['id'] ?>"><i
+                                <li><a href="admin&modifyPost&id=<?= $post->getId() ?>"><i class="ion-edit"></i></a></li>
+                                <li><a href="admin&deletePost&id=<?= $post->getId() ?>"><i
                                             class="ion-android-delete"></i></a></li>
-                                <li><a href="post&id=<?= $post['id'] ?>"><i class="ion-eye"></i></a></li>
+                                <li><a href="post&id=<?= $post->getId() ?>"><i class="ion-eye"></i></a></li>
                             </ul>
                         </div>
                     </div>

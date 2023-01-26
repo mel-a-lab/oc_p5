@@ -6,7 +6,7 @@ class Comment
     private string $content;
     private int $status;
     private DateTime $dateCreated;
-    private DateTime $dateUpdated;
+    private ?DateTime $dateUpdated;
 
     public function __construct($value = array())
     {
@@ -17,6 +17,11 @@ class Comment
 
     public function hydrate($data)
     {
+		$data['dateCreated']= new DateTime($data['dateCreated']);
+
+		if($data['dateUpdated']){
+			$data['dateUpdated']= new DateTime($data['dateUpdated']);
+		}
         foreach ($data as $attribut => $value) {
             $method = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));
             if (is_callable(array($this, $method))) {
@@ -57,7 +62,7 @@ class Comment
 		$this->dateCreated = $dateCreated;
 	}
 
-	public function getDateUpdated(): DateTime {
+	public function getDateUpdated(): ?DateTime {
 		return $this->dateUpdated;
 	}
 
